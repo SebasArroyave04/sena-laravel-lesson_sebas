@@ -23,9 +23,10 @@ Route::get('/sena', function (Request $request) {
 });
 
 Route::post("/create-tournament", [TorneoController::class, 'create']);
-
 Route::post("/create-tournament/{videojuego}", [TorneoController::class, 'createWithGame']);
-Route::get("tournament/{torneo}", [TorneoController::class, "show"]);
+Route::get("/tournament", [TorneoController::class, "getAll"]);
+Route::delete("/eliminar-tournament/{torneo}",[TorneoController::class,"destroy"]);
+Route::put("/actulizar-tournament/{equipo}", [TorneoController::class,"update"]);
 Route::post("/equipos",[TorneoController::class,'create']);
 Route::post("/crear-equipo", [EquiposController::class,"create"]);
 Route::post("/crear-jugador", [JugadoresController::class,"create"]);
@@ -44,8 +45,10 @@ Route::get("/listar-tipo",[TipoVideojuegoController::class,"getAll"]);
 Route::put("/actualizar-tipo/{videojuego}",[TipoVideojuegoController::class,"update"]);
 Route::delete("/eliminar-tipo/{videojuego}",[TipoVideojuegoController::class,"destroy"]);
 Route::post("/crear-juego", [VideoJuegosController::class,"create"]);
+Route::get("/listar-juego",[VideoJuegosController::class,"getAll"]);
 Route::put("/actualizar-videojuego/{videojuego}",[VideoJuegosController::class,"update"]);
 Route::delete("/eliminar-videojuego/{videojuego}",[VideoJuegosController::class,"destroy"]);
 Route::post("/crear-resultado",[ResultadoTorneoController::class,"create"]);
-Route::get("/obtener-resultado/{resultado}",[ResultadoTorneoController::class,"show"]);
-Route::delete("/eliminar-resultado/{resultado}",[ResultadoTorneo::class,"show"]);
+Route::get("/obtener-resultado/{resultado}",[ResultadoTorneoController::class,"getAll"]);
+Route::delete("/eliminar-resultado/{resultado}",[ResultadoTorneoController::class,"destroy"]);
+Route::put("/actualizar-resultado/{videojuego}",[ResultadoTorneoController::class,"update"]);

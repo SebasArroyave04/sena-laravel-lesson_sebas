@@ -11,9 +11,9 @@ class TorneoController extends Controller
         $torneo=Torneo::create([
             "nombre" => $request->nombre,
             "premio" => $request->premio,
-            "fecha_inicio" => $request->date,
-            "fecha_fin" => $request->date,
-            "modalidad" => $request->id_modalidad,
+            "fecha_inicio" => $request->fecha_inicio,
+            "fecha_fin" => $request->fecha_fin,
+            "id_modalidad" => $request->id_modalidad,
             "limite_equipos" => $request->limite_equipos,
 
         ]);
@@ -32,8 +32,8 @@ class TorneoController extends Controller
             "premio" => $request->premio,
             "fecha_inicio"=> $request->fecha_inicio,
             "fecha_fin"=> $request->fecha_fin,
-            "limite_equipos" => $request->limite_equipos,
             "id_modalidad" => $request->id_modalidad,
+            "limite_equipos" => $request->limite_equipos,
         ]);
 
         return response()->json([
@@ -55,11 +55,12 @@ class TorneoController extends Controller
         ]);
     }
 
-    public function show(Torneo $torneo) {
+    public  function getAll() {
+        $equipo = Torneo::with('videojuego')->get();
         return response()->json([
-            "data" => $torneo->load('videojuego', 'equipos.jugadores'),
-            "message" => "Torneo obtenido exitosamente"
-        ]);
+            "data" => $equipo,
+            "message" => "Consuta Equipos Exitosamente!"
+        ],200);
     }
 
 }

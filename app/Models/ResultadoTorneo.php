@@ -11,7 +11,7 @@ class ResultadoTorneo extends Model
         "id_resultado",
         "id_torneo",
         "fehca_fin",
-        "ida_equipo",
+        "id_equipo",
         "id_modalidad",
         "premio"
     ];

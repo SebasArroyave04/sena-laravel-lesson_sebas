@@ -53,7 +53,7 @@ class EquiposController extends Controller
         $equipo->jugadores()->sync($syncData);
         $equipo->save();
         return response()->json([
-            "message" => "Equipo Guardado Exitosamente!"
+            "message" => "Equipo actualizado Exitosamente!"
         ], 200);
     }
 

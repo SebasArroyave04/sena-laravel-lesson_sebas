@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resultado_torneos', function (Blueprint $table) {
+        Schema::create('resultado_torneo', function (Blueprint $table) {
             $table->id('id_resultado');
             $table->unsignedBigInteger('id_torneo');
             $table->date('fecha_fin');

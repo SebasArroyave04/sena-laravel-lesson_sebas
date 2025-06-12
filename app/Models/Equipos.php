@@ -12,6 +12,7 @@ class Equipos extends Model
     protected $fillable = [
         "id_equipo",
         "nombre",
+        "id_equipo",
         "id_lider"
     ];
     public function lider() {
@@ -22,9 +23,8 @@ class Equipos extends Model
         return $this->belongsToMany(Torneo::class,"equipo_torneo", "id_equipo", 'id_torneo');
     }
 
-    function jugadores(){
-        return $this->belongsToMany(Jugadores::class,"equipo_jugador", "id_equipo","id_jugador");
+    public function jugadores() {
+        return $this->belongsToMany(Torneo::class,"equipo_jugador", "id_equipo", 'id_jugador');
     }
-
 }
 

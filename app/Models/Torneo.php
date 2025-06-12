@@ -15,7 +15,7 @@ class Torneo extends Model
         "fecha_fin",
         "id_videojuego",
         "limite_equipos",
-        "modalidad"
+        "id_modalidad"
     ];
 
     public function videojuego(){

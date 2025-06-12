@@ -15,6 +15,7 @@ return new class extends Migration
            $table->bigInteger("id_videojuego")->unsigned()
            ->nullable()->after("id_torneo");
 
+
            $table->foreign("id_videojuego")->references("id_videojuego")->on("videojuegos")
            ->onUpdate("cascade")->onDelete("set null");;
        });

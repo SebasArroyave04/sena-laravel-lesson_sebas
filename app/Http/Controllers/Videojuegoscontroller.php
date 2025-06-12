@@ -15,7 +15,7 @@ class Videojuegoscontroller extends Controller
         $game->tipo()->associate($tipo);
         $game->save();
 
-        $game->modalidad()->attach([$request->id]);
+        $game->modalidad()->attach([$request->id_modalidad]);
         $game->save();
 
         return response()->json([
@@ -32,11 +32,11 @@ class Videojuegoscontroller extends Controller
 
     public function update(Request $request, VideoJuego $videoJuego) {
         $videoJuego->nombre = $request->nombre;
-        $tipo = TipoVideojuego::find($request->id);
+        $tipo = TipoVideojuego::find($request->id_tipo_videojuego);
         $videoJuego->tipo()->associate($tipo);
         $videoJuego->save();
 
-        $videoJuego->modalidad()->attach([$request->id]);
+        $videoJuego->modalidad()->attach([$request->id_modalidad]);
         $videoJuego->save();
 
         return response()->json([

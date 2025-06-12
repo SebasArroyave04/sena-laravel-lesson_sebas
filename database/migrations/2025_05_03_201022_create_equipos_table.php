@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             $table->id('id_equipo');
             $table->string('nombre');
+            $table->unsignedBigInteger('id_torneo');
             $table->unsignedBigInteger('id_lider');
             $table->timestamps();
         });

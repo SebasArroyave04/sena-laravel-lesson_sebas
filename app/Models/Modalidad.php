@@ -14,7 +14,7 @@ class Modalidad extends Model
     ];
 
 public function videojuegos() {
-    return $this->belongToMany(Videojuego::class, "modalidades_videojuego", "id_videojuego");
+    return $this->belongToMany(Videojuego::class, "modalidad_videojuego", "id_videojuego");
 }
 
 }

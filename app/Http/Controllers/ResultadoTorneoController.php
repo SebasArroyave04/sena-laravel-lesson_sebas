@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ResultadoTorneo;
+use App\Models\Torneo;
+use App\Models\Equipos;
+use App\Models\Modalidad;
 
 class ResultadoTorneoController extends Controller
 {
     public function create(Request $request) {
-        $resultado = new ResultadosTorneo();
+        $resultado = new ResultadoTorneo();
 
         $torneo = Torneo::find($request->id_torneo);
         $equipo = Equipos::find($request->id_equipo);
@@ -20,7 +24,7 @@ class ResultadoTorneoController extends Controller
         $resultado->torneo()->associate($torneo);
         $resultado->equipo()->associate($equipo);
         $resultado->modalidad()->associate($modalidad);
-        $resultado->fehca_fin = $request->fehca_fin;
+        $resultado->fecha_fin = $request->fecha_fin;
         $resultado->premio = $request->premio;
         $resultado->save();
 
@@ -29,12 +33,12 @@ class ResultadoTorneoController extends Controller
         ], 201);
     }
 
-    public function show(ResultadosTorneo $resultado) {
-
+    public  function getAll() {
+        $equipo = ResultadoTorneo::with('torneo','equipo', 'modalidad' )->get();
         return response()->json([
-            "data" => $resultado->load(['torneo', 'equipo', 'modalidad']),
-            "message" => "Resultado obtenido exitosamente"
-        ]);
+            "data" => $equipo,
+            "message" => "Consuta Equipos Exitosamente!"
+        ],200);
     }
 
     public function destroy( ResultadosTorneo $resultado) {

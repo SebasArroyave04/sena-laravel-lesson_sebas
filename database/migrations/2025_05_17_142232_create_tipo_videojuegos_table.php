@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_videojuegos', function (Blueprint $table) {
+        Schema::create('tipo_videojuego', function (Blueprint $table) {
             $table->id('id_tipo_videojuego');
             $table->string('tipo_videojuego');
             $table->timestamps();
